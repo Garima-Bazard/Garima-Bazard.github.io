@@ -17,6 +17,6 @@ I have been working with image datasets, thanks to the specialisation track of m
 <br />
 I have always loved maths. Though intimidating, I am trying my best to be friends with the maths behind AI. Currently, I am reading the Deep Learning book by Ian Goodfellow et al, an amazing book if you ask me!
 
-</br>
+<br />
 Aside from my academic pursuits, I love music and sports. I am crazy about the game of cricket and playing badminton brings me immense joy. Discovering new music and getting lost in the poetry behind lyrics is my favourite task to do in my free time. 
 
