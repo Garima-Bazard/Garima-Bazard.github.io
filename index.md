@@ -1,13 +1,13 @@
 ---
 layout: home2
 title: Me in a Nutshell
-description: "Jordi Pont-Tuset's website"
+description: "Garima's website"
 tags: [Jekyll, theme, responsive, blog, template]
 image:
   feature: trees.jpg
 ---
 
-I am a research scientist at <a href="https://deepmind.google" target="_blank">Google DeepMind</a>.
+I am a second year master student, specialising in Intelligent Vision and Biometrics.
 
 <br />
 Previously, I worked at <a href="http://www.vision.ee.ethz.ch/index.en.html" target="_blank">ETHZ</a>
