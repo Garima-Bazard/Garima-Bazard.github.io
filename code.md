@@ -8,5 +8,5 @@ comments: false
 ---
 
 
-* [**Manga Colorizer Using TensorFlow and Pix2Pix**](https://github.com/your-repo/manga-colorizer)<br>
+* [**Iro.it - A Manga Panel Colorizer Using Pix2Pix**](https://github.com/Garima-Bazard/Iro_it)<br>
 This project demonstrates the use of the Pix2Pix model to colorize black-and-white manga panels. The model is trained using a paired dataset of grayscale and color images. The manga panels from the Manga109 dataset are processed and colorized with TensorFlow, and the results are visualized in real time.
