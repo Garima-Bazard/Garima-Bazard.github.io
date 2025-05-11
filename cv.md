@@ -7,5 +7,5 @@ modified: 18-10-2014
 comments: false
 ---
 
-You can also download [my full CV]{Garima_cv_may.pdf}.
+You can also download <a hyperlink="Garima_cv_may.pdf">my full CV</a>.
 
