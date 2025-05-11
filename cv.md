@@ -7,5 +7,5 @@ modified: 18-10-2014
 comments: false
 ---
 
-You can also download my <a href="TO ADD" target="_blank">full CV</a>.
+You can also download [my full CV]{Garima_cv_may.pdf}.
 
