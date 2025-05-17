@@ -1,9 +1,77 @@
 ---
 layout: post
-title: "Soon to be added"
-description: "..."
+title: "Haikus"
+description: "."
 comments: true
 ---
 
+Ain’t the sky, the trees,
+the wind & the bird poop on your
+head just nature’s grace.
 
-:)
+
+In a veg sandwich
+some random vegetables
+get sandwiched is all.
+
+Meant to be team work..
+Then how did I end up doing
+all of it alone…
+
+When hiking with friends
+click some pictures, for you will
+cherish them later.
+
+On seeing humans,
+the zoo animals say, “look..
+who’s here to amuse us.”
+
+I was busy adjusting
+rear view mirror but is was
+the dirty rear windshield.
+
+Gazing in the pond,
+we stood, but swans just had to 
+spoil our reflection.
+
+Sunny days are fiery;
+Drink those cold drinks;
+While the ice cube clinks.
+
+Coming online…
+some amiable, some belligerent,
+some fun people pop up.
+
+The glass gave up 
+on being a glass after seeing
+some silver shine.
+
+There’s much to learn,
+Will one lifetime be enough?
+Of course not! Shame!
+
+So much to do but
+Here I sit doing nothing.
+Panicked! Overwhelmed!
+
+Anxious for future;
+Sabotaging my present;
+Reminiscing past.
+
+Wanna be a cloud and
+drift around
+
+Stood in the queue..
+For potatoes but know what.
+I got spaghetti..
+
+
+Wanna be a cloud
+But not here on earth
+On jupiter
+
+The sky is weeping.
+Cold wind, dry skin, dry lips
+no cream, no umbrella.
+
+
