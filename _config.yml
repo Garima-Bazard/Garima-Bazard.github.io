@@ -32,6 +32,8 @@ links:
     url: /code/
   - title: Blog
     url: /blog/
+  - title: Misc
+    url: /misc
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Europe/Zurich
