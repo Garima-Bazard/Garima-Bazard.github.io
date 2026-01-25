@@ -1,0 +1,550 @@
+---
+layout: null
+permalink: /miscellaneous/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Chaos Drawer | Misc</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f11;
+            --card-bg: #1a1a1c;
+            --accent-1: #ffeb3b; /* Acid Yellow */
+            --accent-2: #ff0055; /* Hot Pink */
+            --accent-3: #00f2ff; /* Cyan */
+            --text: #ffffff;
+            --text-muted: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative; /* For absolute positioning of cats */
+        }
+
+        /* Funky Background Pattern */
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .header {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid var(--text);
+            padding-bottom: 1rem;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text);
+            position: relative;
+            cursor: default;
+            transition: color 0.3s;
+        }
+
+        h1:hover {
+            color: var(--text);
+        }
+
+        .back-link {
+            font-family: 'Space Grotesk', sans-serif;
+            text-decoration: none;
+            color: var(--bg);
+            background: var(--text);
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 10;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            background: var(--accent-1);
+        }
+
+        /* GRID LAYOUT */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2; /* Above the cats */
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--text);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 5;
+        }
+
+        .card-header {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Specific Card Styles */
+
+        /* HAIKU CARD */
+        .haiku-card {
+            grid-column: span 1;
+            grid-row: span 1;
+            background: linear-gradient(145deg, #1a1a1c, #222);
+        }
+
+        .haiku-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--accent-3);
+            text-align: center;
+            margin: auto;
+        }
+        
+        .haiku-author {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        /* SPOTIFY CARD */
+        .spotify-card {
+            grid-column: span 2;
+            background: #000;
+            border: 1px solid #1db954;
+            color: #1db954;
+        }
+        
+        .spotify-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .album-art {
+            width: 80px;
+            height: 80px;
+            background: #333;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: spin 10s linear infinite;
+        }
+
+        .song-info h3 {
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .equalizer {
+            display: flex;
+            gap: 3px;
+            height: 20px;
+            align-items: flex-end;
+            margin-left: auto;
+        }
+
+        .bar {
+            width: 4px;
+            background: #1db954;
+            animation: equalize 1s infinite ease-in-out;
+        }
+
+        /* BOOK CARD */
+        .book-card {
+            grid-column: span 1;
+            background: #e8e6e1;
+            color: #000;
+        }
+
+        .book-list {
+            list-style: none;
+        }
+
+        .book-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .book-item:last-child {
+            border-bottom: none;
+        }
+
+        .rating {
+            font-weight: bold;
+            color: #ff5e00;
+        }
+
+        /* RANDOM THOUGHTS */
+        .thoughts-card {
+            grid-column: span 1;
+            grid-row: span 2;
+            background: var(--accent-2);
+            color: #fff;
+            border: none;
+        }
+
+        .sticker {
+            position: absolute;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            background: yellow;
+            color: black;
+            transform: rotate(-5deg);
+            border-radius: 4px;
+            top: -10px;
+            right: -10px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+        }
+
+        /* DRAGGABLE ELEMENT */
+        .draggable-sticker {
+            position: absolute;
+            background: #fff;
+            color: #000;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: grab;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: rotate(15deg);
+            top: 10%;
+            right: 10%;
+        }
+
+        .draggable-sticker:active {
+            cursor: grabbing;
+        }
+
+        /* --- STATIC CATS POSITIONING --- */
+        .static-cat {
+            position: fixed;
+            z-index: 50;
+            width: 120px; /* Adjust size as needed */
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+            pointer-events: none; /* Let clicks pass through */
+        }
+        
+        .static-cat:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Top Left Zone (for cats looking RIGHT) */
+        .cat-top-left {
+            top: 0;
+            left: 0;
+            width: 150px;
+        }
+
+        /* Top Right Zone (for cats looking LEFT) */
+        .cat-top-right {
+            top: 0;
+            right: 0;
+            width: 140px;
+        }
+
+        /* Bottom Left Zone (for cats looking RIGHT or UP) */
+        .cat-bottom-left {
+            bottom: -10px;
+            left: -10px;
+            width: 130px;
+        }
+
+        /* Bottom Right Zone (for cats looking LEFT or UP) */
+        .cat-bottom-right {
+            bottom: -10px;
+            right: -10px;
+            width: 160px;
+        }
+
+
+        /* ANIMATIONS */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes equalize {
+            0% { height: 5px; }
+            50% { height: 20px; }
+            100% { height: 5px; }
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .spotify-card, .thoughts-card {
+                grid-column: span 1;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+            .static-cat {
+                width: 80px; /* Smaller cats on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-noise"></div>
+
+    <!-- The Draggable Circle -->
+    <div class="draggable-sticker" id="dragMe">
+        DRAG ME AROUND!
+    </div>
+
+    <!-- 
+      STATIC CATS
+      Swap the 'src' below if the cat is looking the wrong way!
+      Ensure these files are in your repository.
+    -->
+    
+    <!-- Top Left Corner (Best for: Cat looking Down/Right) -->
+    <img src="image_51f3db.png" class="static-cat cat-top-left" alt="Cat Top Left">
+
+    <!-- Top Right Corner (Best for: Cat looking Down/Left) -->
+    <img src="image_51f378.png" class="static-cat cat-top-right" alt="Cat Top Right">
+
+    <!-- Bottom Left Corner (Best for: Cat looking Up/Right) -->
+    <img src="image_51f08f.png" class="static-cat cat-bottom-left" alt="Cat Bottom Left">
+
+    <!-- Bottom Right Corner (Best for: Cat looking Up/Left) -->
+    <img src="image_51f038.png" class="static-cat cat-bottom-right" alt="Cat Bottom Right">
+
+
+    <header class="header">
+        <h1>Miscellaneous<br><span style="color: var(--accent-1); -webkit-text-stroke: 0;">Zone</span></h1>
+        <a href="/" class="back-link">← Main Site</a>
+    </header>
+
+    <div class="grid-container">
+
+        <!-- Spotify Stats -->
+        <div class="card spotify-card">
+            <div class="card-header">
+                <span class="card-tag" style="background: rgba(29, 185, 84, 0.2); color: #1db954;">On Repeat</span>
+            </div>
+            <div class="spotify-content">
+                <div class="album-art">
+                    <!-- Placeholder for album art -->
+                    <img src="https://picsum.photos/id/45/200/200" alt="Album Art">
+                </div>
+                <div class="song-info">
+                    <h3>Supercut</h3>
+                    <p style="color: #888; font-size: 0.9rem;">Lorde</p>
+                </div>
+                <div class="equalizer">
+                    <div class="bar" style="animation-delay: 0s"></div>
+                    <div class="bar" style="animation-delay: 0.2s"></div>
+                    <div class="bar" style="animation-delay: 0.4s"></div>
+                    <div class="bar" style="animation-delay: 0.1s"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Haiku 1 -->
+        <div class="card haiku-card">
+            <div class="card-header">
+                <span class="card-tag">Haiku #42</span>
+            </div>
+            <p class="haiku-text">
+                Code breaks in the night,<br>
+                Coffee mug is empty now,<br>
+                Sunlight hurts my eyes.
+            </p>
+            <p class="haiku-author">- 3 AM Commit</p>
+        </div>
+
+        <!-- Book Recs -->
+        <div class="card book-card">
+            <div class="card-header">
+                Bookshelf
+                <span class="card-tag" style="background: rgba(0,0,0,0.1); color: #000;">Reading</span>
+            </div>
+            <ul class="book-list">
+                <li class="book-item">
+                    <span>Dark Forest</span>
+                    <span class="rating">5/5</span>
+                </li>
+                <li class="book-item">
+                    <span>Neuromancer</span>
+                    <span class="rating">4.5/5</span>
+                </li>
+                <li class="book-item">
+                    <span>Dune</span>
+                    <span class="rating">Currently</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Random Thoughts / Manifest -->
+        <div class="card thoughts-card">
+            <div class="sticker">LOUD!</div>
+            <div class="card-header">
+                Brain Dump
+            </div>
+            <p style="font-size: 1.5rem; line-height: 1.4; font-weight: 500;">
+                Why do we call it "debugging" when we are actually just creating new, more exciting bugs?
+            </p>
+            <br>
+            <p style="opacity: 0.8;">
+                Goals for 2026:
+                <br>• Touch grass
+                <br>• Learn Rust (maybe)
+                <br>• Fix that one div
+            </p>
+        </div>
+
+         <!-- Haiku 2 -->
+         <div class="card haiku-card" style="background: var(--bg); border: 1px dashed var(--text-muted);">
+            <div class="card-header">
+                <span class="card-tag">Haiku #88</span>
+            </div>
+            <p class="haiku-text" style="color: var(--text);">
+                Server costs are high,<br>
+                Static sites are free to host,<br>
+                Wallet breathes a sigh.
+            </p>
+        </div>
+
+        <!-- Tech Stack / Floating Icons -->
+        <div class="card" style="background: transparent; border: 1px solid var(--accent-3);">
+            <div class="card-header" style="color: var(--accent-3);">
+                Status
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div style="padding: 10px; background: rgba(0, 242, 255, 0.1); color: var(--accent-3); border-radius: 5px;">Coding</div>
+                <div style="padding: 10px; background: rgba(255, 235, 59, 0.1); color: var(--accent-1); border-radius: 5px;">Gaming</div>
+                <div style="padding: 10px; background: rgba(255, 0, 85, 0.1); color: var(--accent-2); border-radius: 5px;">Sleeping</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // GSAP Animations
+        gsap.from(".header h1", {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power4.out"
+        });
+
+        gsap.from(".card", {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out",
+            delay: 0.5
+        });
+
+        // Make the sticker draggable
+        Draggable.create("#dragMe", {
+            bounds: "body",
+            inertia: true
+        });
+
+        // Hover effect for Haiku cards to tilt
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Simple tilt effect calculation could go here
+                // For now, let's just keep the hover scaling in CSS
+            });
+        });
+    </script>
+</body>
+</html>
