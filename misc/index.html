@@ -318,53 +318,39 @@ permalink: /misc/
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); /* Adds depth so they don't look flat */
         }
 
-        /* Top Left Zone (for cats looking RIGHT) */
-        .cat-top-left {
-            top: 0;
-            left: 0;
-            width: 150px;
+        /* CAT STYLES */
+        .cat-base {
+            position: absolute;
+            z-index: 100; /* Force them on top */
+            pointer-events: none;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+            /* If images have white backgrounds, uncomment next line: */
+            /* mix-blend-mode: multiply; */ 
         }
 
-        /* Top Right Zone (for cats looking LEFT) */
-        .cat-top-right {
-            top: 0;
-            right: 0;
-            width: 140px;
-        }
-
-        .cat-header {
-            top: -55px; /* Pulls it up to sit on the line */
-            right: 20%;
-            width: 100px;
-            z-index: 1; /* In front of header border */
-        }
-
-        .cat-peek {
-            top: 220px; 
-            left: 5%; /* Peeking from the left side */
-            width: 90px;
-            z-index: -1; /* Behind the cards */
-            opacity: 0.8;
-            transform: rotate(-10deg);
-        }
-
-        /* 3. Resting on the Book Card */
-        .cat-shelf {
-            top: 600px; /* Adjust based on where your book card lands */
-            right: 15%;
+        /* 1. Header Cat (Beside 'Miscellaneous') */
+        .cat-header-pos {
             width: 80px;
-            z-index: 20; /* On top of the card */
+            bottom: 10px; /* Sits on the bottom line of header */
+            right: 0px;   /* Aligns to right edge of header */
         }
 
-        /* 4. Floor walker (Fixed to screen bottom) */
-        .cat-floor {
-            position: fixed; /* This one stays while you scroll */
-            bottom: -5px;
+        /* 2. Spotify Cat (On top of card) */
+        .cat-spotify-pos {
+            width: 70px;
+            top: -35px; /* Pulls it up out of the card */
             right: 20px;
-            width: 110px;
-            z-index: 50;
+            transform: rotate(5deg);
         }
 
+        /* 3. Right Side Space (Under Haiku) */
+        .cat-right-pos {
+            width: 100px;
+            top: 20px;
+            right: -20px; /* Hangs off the side slightly */
+        }
+
+        
         /* ANIMATIONS */
         @keyframes spin {
             from { transform: rotate(0deg); }
@@ -406,14 +392,8 @@ permalink: /misc/
       This tells the browser to look in the main folder (root), not the 'misc' folder.
     -->
     
-    <!-- Top Left Corner (Best for: Cat looking Down/Right) -->
-    <img src="image1.png" class="static-cat cat-header" alt="Cat Top Left" onerror="this.style.display='none'">
-
-    <!-- Top Right Corner (Best for: Cat looking Down/Left) -->
-    <img src="image2.png" class="static-cat cat-peek" alt="Cat Top Right" onerror="this.style.display='none'">
-
     <!-- Bottom Left Corner (Best for: Cat looking Up/Right) -->
-    <img src="/image3.png" class="static-cat cat-shelf" alt="Cat Bottom Left" onerror="this.style.display='none'">
+   
 
     <!-- Bottom Right Corner (Best for: Cat looking Up/Left) -->
     <img src="/image43.png" class="static-cat cat-floor" alt="Cat Bottom Right" onerror="this.style.display='none'">
@@ -422,12 +402,15 @@ permalink: /misc/
     <header class="header">
         <h1>Miscellaneous<br><span style="color: var(--accent-1); -webkit-text-stroke: 0;">Zone</span></h1>
         <a href="/" class="back-link">← Main Site</a>
+
+        <img src="image1.png" class="static-cat cat-header" alt="Cat Top Left" onerror="this.style.display='none'">
     </header>
 
     <div class="grid-container">
 
         <!-- Spotify Stats -->
         <div class="card spotify-card">
+            <img src="image2.png" class="static-cat cat-peek" alt="Cat Top Right" onerror="this.style.display='none'">
             <div class="card-header">
                 <span class="card-tag" style="background: rgba(29, 185, 84, 0.2); color: #1db954;">On Repeat</span>
             </div>
@@ -451,6 +434,7 @@ permalink: /misc/
 
         <!-- Haiku 1 -->
         <div class="card haiku-card">
+             <img src="/image3.png" class="static-cat cat-shelf" alt="Cat Bottom Left" onerror="this.style.display='none'">
             <div class="card-header">
                 <span class="card-tag">Haiku #42</span>
             </div>
