@@ -54,6 +54,7 @@ permalink: /misc/
         .header {
             margin-bottom: 3rem;
             display: flex;
+            flex-wrap: wrap; /* Allows wrapping on small screens */
             justify-content: space-between;
             align-items: flex-end;
             border-bottom: 2px solid var(--text);
@@ -63,15 +64,17 @@ permalink: /misc/
 
         h1 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
+            /* Reduced max size from 8vw/6rem to 6vw/4rem to fit better */
+            font-size: clamp(2.5rem, 6vw, 4rem); 
             font-weight: 800;
-            line-height: 0.9;
+            line-height: 1;
             text-transform: uppercase;
             color: transparent;
             -webkit-text-stroke: 2px var(--text);
             position: relative;
             cursor: default;
             transition: color 0.3s;
+            word-break: break-word; /* Prevents text from staying one long line */
         }
 
         h1:hover {
@@ -308,8 +311,12 @@ permalink: /misc/
             pointer-events: none; /* Let clicks pass through */
         }
         
-        .static-cat:hover {
-            transform: scale(1.1) rotate(5deg);
+        .static-cat {
+            position: absolute; /* Changed from fixed so they scroll with the page */
+            z-index: 10;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); /* Adds depth so they don't look flat */
         }
 
         /* Top Left Zone (for cats looking RIGHT) */
@@ -326,20 +333,38 @@ permalink: /misc/
             width: 140px;
         }
 
-        /* Bottom Left Zone (for cats looking RIGHT or UP) */
-        .cat-bottom-left {
-            bottom: -10px;
-            left: -10px;
-            width: 130px;
+        .cat-header {
+            top: -55px; /* Pulls it up to sit on the line */
+            right: 20%;
+            width: 100px;
+            z-index: 1; /* In front of header border */
         }
 
-        /* Bottom Right Zone (for cats looking LEFT or UP) */
-        .cat-bottom-right {
-            bottom: -10px;
-            right: -10px;
-            width: 160px;
+        .cat-peek {
+            top: 220px; 
+            left: 5%; /* Peeking from the left side */
+            width: 90px;
+            z-index: -1; /* Behind the cards */
+            opacity: 0.8;
+            transform: rotate(-10deg);
         }
 
+        /* 3. Resting on the Book Card */
+        .cat-shelf {
+            top: 600px; /* Adjust based on where your book card lands */
+            right: 15%;
+            width: 80px;
+            z-index: 20; /* On top of the card */
+        }
+
+        /* 4. Floor walker (Fixed to screen bottom) */
+        .cat-floor {
+            position: fixed; /* This one stays while you scroll */
+            bottom: -5px;
+            right: 20px;
+            width: 110px;
+            z-index: 50;
+        }
 
         /* ANIMATIONS */
         @keyframes spin {
@@ -374,10 +399,7 @@ permalink: /misc/
 
     <div class="bg-noise"></div>
 
-    <!-- The Draggable Circle -->
-    <div class="draggable-sticker" id="dragMe">
-        DRAG ME AROUND!
-    </div>
+    
 
     <!-- 
       STATIC CATS
@@ -386,16 +408,16 @@ permalink: /misc/
     -->
     
     <!-- Top Left Corner (Best for: Cat looking Down/Right) -->
-    <img src="image1.png" class="static-cat cat-top-left" alt="Cat Top Left" onerror="this.style.display='none'">
+    <img src="image1.png" class="static-cat cat-header" alt="Cat Top Left" onerror="this.style.display='none'">
 
     <!-- Top Right Corner (Best for: Cat looking Down/Left) -->
-    <img src="image2.png" class="static-cat cat-top-right" alt="Cat Top Right" onerror="this.style.display='none'">
+    <img src="image2.png" class="static-cat cat-peek" alt="Cat Top Right" onerror="this.style.display='none'">
 
     <!-- Bottom Left Corner (Best for: Cat looking Up/Right) -->
-    <img src="/image3.png" class="static-cat cat-bottom-left" alt="Cat Bottom Left" onerror="this.style.display='none'">
+    <img src="/image3.png" class="static-cat cat-shelf" alt="Cat Bottom Left" onerror="this.style.display='none'">
 
     <!-- Bottom Right Corner (Best for: Cat looking Up/Left) -->
-    <img src="/image43.png" class="static-cat cat-bottom-right" alt="Cat Bottom Right" onerror="this.style.display='none'">
+    <img src="/image43.png" class="static-cat cat-floor" alt="Cat Bottom Right" onerror="this.style.display='none'">
 
 
     <header class="header">
