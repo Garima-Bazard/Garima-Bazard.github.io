@@ -303,51 +303,38 @@ permalink: /misc/
 
         /* --- STATIC CATS POSITIONING --- */
         .static-cat {
-            position: fixed;
-            z-index: 50;
+            position: absolute;
+            z-index: 10;
             width: 120px; /* Adjust size as needed */
             height: auto;
             transition: transform 0.3s ease-in-out;
             pointer-events: none; /* Let clicks pass through */
-        }
-        
-        .static-cat {
-            position: absolute; /* Changed from fixed so they scroll with the page */
-            z-index: 10;
-            pointer-events: none;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); /* Adds depth so they don't look flat */
         }
 
-        /* CAT STYLES */
-        .cat-base {
-            position: absolute;
-            z-index: 100; /* Force them on top */
-            pointer-events: none;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
-            /* If images have white backgrounds, uncomment next line: */
-            /* mix-blend-mode: multiply; */ 
+        /* Position cats in the gaps between grid items */
+        .cat-gap-1 {
+            top: -5%;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        /* 1. Header Cat (Beside 'Miscellaneous') */
-        .cat-header-pos {
-            width: 80px;
-            bottom: 10px; /* Sits on the bottom line of header */
-            right: 0px;   /* Aligns to right edge of header */
+        .cat-gap-2 {
+            top: 35%;
+            right: -40px;
+            transform: translateY(-50%);
         }
 
-        /* 2. Spotify Cat (On top of card) */
-        .cat-spotify-pos {
-            width: 70px;
-            top: -35px; /* Pulls it up out of the card */
-            right: 20px;
-            transform: rotate(5deg);
+        .cat-gap-3 {
+            bottom: 1px;
+            left: 95%;
+            transform: translateX(-50%);
         }
 
-        /* 3. Right Side Space (Under Haiku) */
-        .cat-right-pos {
-            width: 100px;
-            top: 20px;
-            right: -20px; /* Hangs off the side slightly */
+        .cat-gap-4 {
+            top: 75%;
+            left: -10px;
+            transform: translateY(-50%);
         }
 
         
@@ -377,6 +364,15 @@ permalink: /misc/
             .static-cat {
                 width: 80px; /* Smaller cats on mobile */
             }
+            .cat-gap-2, .cat-gap-4 {
+                display: none; /* Hide side cats on mobile since there's no space */
+            }
+            .cat-gap-1 {
+                top: 10px;
+            }
+            .cat-gap-3 {
+                bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -391,26 +387,23 @@ permalink: /misc/
       Note the "/" at the start of src. 
       This tells the browser to look in the main folder (root), not the 'misc' folder.
     -->
-    
-    <!-- Bottom Left Corner (Best for: Cat looking Up/Right) -->
-   
-
-    <!-- Bottom Right Corner (Best for: Cat looking Up/Left) -->
-    <img src="/image43.png" class="static-cat cat-floor" alt="Cat Bottom Right" onerror="this.style.display='none'">
 
 
     <header class="header">
         <h1>Miscellaneous<br><span style="color: var(--accent-1); -webkit-text-stroke: 0;">Zone</span></h1>
         <a href="/" class="back-link">← Main Site</a>
-
-        <img src="image1.png" class="static-cat cat-header" alt="Cat Top Left" onerror="this.style.display='none'">
     </header>
 
     <div class="grid-container">
 
+        <!-- Position cats in the gaps between cards -->
+        <img src="image1.png" class="static-cat cat-gap-1" alt="Cat in top gap" onerror="this.style.display='none'">
+        <img src="image2.png" class="static-cat cat-gap-2" alt="Cat in right gap" onerror="this.style.display='none'">
+        <img src="/image3.png" class="static-cat cat-gap-3" alt="Cat in bottom gap" onerror="this.style.display='none'">
+        <img src="/image4.png" class="static-cat cat-gap-4" alt="Cat in left gap" onerror="this.style.display='none'">
+
         <!-- Spotify Stats -->
         <div class="card spotify-card">
-            <img src="image2.png" class="static-cat cat-peek" alt="Cat Top Right" onerror="this.style.display='none'">
             <div class="card-header">
                 <span class="card-tag" style="background: rgba(29, 185, 84, 0.2); color: #1db954;">On Repeat</span>
             </div>
@@ -434,7 +427,6 @@ permalink: /misc/
 
         <!-- Haiku 1 -->
         <div class="card haiku-card">
-             <img src="/image3.png" class="static-cat cat-shelf" alt="Cat Bottom Left" onerror="this.style.display='none'">
             <div class="card-header">
                 <span class="card-tag">Haiku #42</span>
             </div>
