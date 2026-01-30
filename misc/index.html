@@ -7,28 +7,16 @@ permalink: /misc/
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miscellaneous | Garima</title>
+    <title>Side Quests | Garima</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f8f9fa; /* Light mode to match main site */
-            --card-bg: #ffffff;
-            --accent: #4a90e2; /* Blue from your header mountain */
+            --bg: #ffffff;
             --text: #333333;
-            --text-muted: #666666;
-            --border: #e1e4e8;
-        }
-
-        /* Dark mode preference for Misc Zone */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #0b0c10;
-                --card-bg: #1f2833;
-                --text: #ffffff;
-                --accent: #66fcf1;
-                --border: #45a29e;
-            }
+            --text-muted: #777777;
+            --accent: #5a87a1; 
+            --card-border: #eeeeee;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,147 +26,166 @@ permalink: /misc/
             color: var(--text);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             padding: 2rem;
-            line-height: 1.6;
-        }
-
-        /* Navigation - Matches Main Site */
-        nav {
-            display: flex;
-            justify-content: flex-start;
-            gap: 2rem;
-            margin-bottom: 4rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        nav a { text-decoration: none; color: var(--text-muted); transition: color 0.3s; }
-        nav a:hover, nav a.active { color: var(--accent); }
-
-        .header-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
-        }
-
-        /* Bento Grid */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-auto-rows: minmax(150px, auto);
-            gap: 1.5rem;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .nav-brand { margin-right: auto; text-decoration: none; color: var(--text); }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { text-decoration: none; color: var(--text); opacity: 0.6; transition: opacity 0.2s; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; }
+
+        header { margin-bottom: 4rem; }
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--text);
+            letter-spacing: -2px;
+        }
+        header p {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-auto-rows: minmax(180px, auto);
+            gap: 1.5rem;
+        }
+
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
             padding: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            background: white;
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .card-label {
+        .label {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: var(--accent);
             margin-bottom: 1rem;
+            letter-spacing: 1px;
         }
 
-        /* Specific Content Styles */
-        .haiku-text { font-family: 'Space Grotesk', sans-serif; font-style: italic; font-size: 1.1rem; }
+        .haiku { font-family: 'Space Grotesk', sans-serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; }
+        .spotify-mini { display: flex; align-items: center; gap: 1rem; margin: auto 0; }
+        .vinyl { width: 50px; height: 50px; border-radius: 50%; background: #222; animation: rotate 10s linear infinite; }
+        .thoughts { font-family: 'Syne', sans-serif; font-size: 1.2rem; line-height: 1.3; }
         
-        .spotify-card { background: #000; color: #1DB954; border-color: #1DB954; }
-        .spotify-mini { display: flex; align-items: center; gap: 1rem; }
-        .album-art { width: 60px; height: 60px; border-radius: 50%; animation: spin 12s linear infinite; }
+        .research-item { font-size: 0.95rem; line-height: 1.5; color: var(--text); font-family: 'Space Grotesk', sans-serif; }
+        .research-item strong { color: var(--accent); }
 
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* Status Tags */
-        .tag-cloud { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tag { padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); font-size: 0.8rem; }
-
-        @media (max-width: 768px) {
-            nav { gap: 1rem; font-size: 0.75rem; }
-            .grid-container { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
+            nav { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="/">GARIMA'S SITE</a>
-        <a href="/cv">CV</a>
-        <a href="/projects">PROJECTS</a>
-        <a href="/blog">BLOG</a>
-        <a href="/misc" class="active">MISC</a>
+        <a href="/" class="nav-brand">GARIMA'S SITE</a>
+        <div class="nav-links">
+            <a href="/cv">CV</a>
+            <a href="/projects">PROJECTS</a>
+            <a href="/blog">BLOG</a>
+            <a href="/misc" class="active">MISC</a>
+        </div>
     </nav>
 
-    <h1 class="header-title">The <span style="color: var(--accent);">Misc</span> Zone</h1>
+    <header>
+        <h1>Side Quests</h1>
+        <p>A collection of things that don't belong anywhere else.</p>
+    </header>
 
-    <div class="grid-container">
-        <div class="card spotify-card" style="grid-column: span 2;">
-            <div class="card-label">Currently Playing</div>
+    <div class="grid">
+        <div class="card" style="grid-column: span 2;">
+            <div class="label">The Research Lab</div>
+            <div class="research-item">
+                Currently investigating <strong>Point Cloud Registration</strong> techniques for dynamic environments. 
+                Focusing on making registration more robust to noise while keeping the inference time low enough for real-time applications.
+                <br><br>
+                <span style="opacity: 0.6; font-size: 0.8rem;">📍 Sweden Life • PhD Year 1</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="label">The Loop</div>
             <div class="spotify-mini">
-                <div class="album-art" style="background: #333;"></div>
+                <div class="vinyl"></div>
                 <div>
-                    <div style="font-weight: 800;">Cheerleader</div>
-                    <div style="opacity: 0.7; font-size: 0.9rem;">JP Cooper</div>
+                    <div style="font-weight: 700;">Cheerleader</div>
+                    <div style="color: var(--text-muted); font-size: 0.8rem;">JP Cooper</div>
                 </div>
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-label">Haiku #42</div>
-            <p class="haiku-text">Code breaks in the night,<br>Coffee mug is empty now,<br>Sunlight hurts my eyes.</p>
-        </div>
-
-        <div class="card" style="grid-row: span 2; background: var(--accent); color: white;">
-            <div class="card-label" style="color: white; opacity: 0.8;">Brain Dump</div>
-            <p style="font-size: 1.4rem; font-weight: 700;">Why do we call it "debugging" when we are actually just creating more exciting bugs?</p>
-        </div>
-
-        <div class="card">
-            <div class="card-label">Reading List</div>
-            <div style="font-size: 0.9rem;">
-                <div>• Dark Forest (5/5)</div>
-                <div>• Neuromancer (4.5/5)</div>
-                <div style="color: var(--accent);">• Dune (Reading)</div>
+        <div class="card" style="grid-row: span 2;">
+            <div class="label">Brain Dump</div>
+            <p class="thoughts">Why do we call it "debugging" when we are actually just creating more exciting bugs?</p>
+            <div style="margin-top: auto; border-top: 1px solid #f9f9f9; padding-top: 1rem;">
+                <div class="label" style="font-size: 0.6rem;">Goals</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">
+                    • Learn Rust (seriously)<br>
+                    • Touch actual grass<br>
+                    • Fix that one stubborn div
+                </p>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-label">Status</div>
-            <div class="tag-cloud">
-                <span class="tag">Coding</span>
-                <span class="tag">Gaming</span>
-                <span class="tag">Coffee++</span>
+            <div class="label">3 AM Thoughts</div>
+            <p class="haiku">Code breaks in the night,<br>Coffee mug is empty now,<br>Sunlight hurts my eyes.</p>
+        </div>
+
+        <div class="card">
+            <div class="label">The Shelf</div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;">
+                <div style="margin-bottom: 0.5rem;">Dark Forest <span style="float: right; color: var(--accent);">★ 5</span></div>
+                <div style="margin-bottom: 0.5rem;">Neuromancer <span style="float: right; color: var(--accent);">★ 4.5</span></div>
+                <div style="opacity: 0.5;">Dune (Reading...)</div>
             </div>
         </div>
     </div>
 
     <script>
-        gsap.from(".card", {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "expo.out"
+        gsap.from("header > *", { opacity: 0, y: 20, duration: 1, stagger: 0.2 });
+        gsap.from(".card", { 
+            opacity: 0, 
+            y: 30, 
+            duration: 0.8, 
+            stagger: 0.1, 
+            delay: 0.4,
+            ease: "power2.out" 
         });
     </script>
 </body>
