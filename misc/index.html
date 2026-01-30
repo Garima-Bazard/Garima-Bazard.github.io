@@ -19,71 +19,103 @@ permalink: /misc/
             --card-border: #eeeeee;
         }
 
+        /* RESET & BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            padding: 2rem;
-            max-width: 1100px;
+            font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica", "Arial", sans-serif;
+            padding: 0 1rem;
+            max-width: 1280px;
             margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* NAVIGATION - MATCHING MINIMAL MISTAKES EXACTLY */
         nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding-bottom: 2rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f2f3f3;
             margin-bottom: 3rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            border-bottom: 1px solid #f0f0f0;
         }
 
-        .nav-brand { margin-right: auto; text-decoration: none; color: var(--text); }
-        .nav-links { display: flex; gap: 1.5rem; }
-        .nav-links a { text-decoration: none; color: var(--text); opacity: 0.6; transition: opacity 0.2s; }
-        .nav-links a:hover, .nav-links a.active { opacity: 1; }
+        .nav-brand {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #3d4144;
+            text-transform: uppercase;
+        }
 
-        header { margin-bottom: 4rem; }
+        .nav-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3d4144;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            opacity: 1;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* CONTENT LAYOUT */
+        header { 
+            margin-bottom: 3rem; 
+            padding: 0 0.5rem;
+        }
+        
         header h1 {
             font-family: 'Syne', sans-serif;
             font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--text);
-            letter-spacing: -2px;
+            color: #333;
+            letter-spacing: -3px;
+            line-height: 1;
         }
+
         header p {
             font-family: 'Space Grotesk', sans-serif;
             color: var(--text-muted);
-            margin-top: 0.5rem;
+            margin-top: 0.75rem;
             font-size: 1.1rem;
         }
 
+        /* GRID - VISIBLE BY DEFAULT */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             grid-auto-rows: minmax(180px, auto);
             gap: 1.5rem;
+            padding-bottom: 4rem;
         }
 
         .card {
             border: 1px solid var(--card-border);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
             background: white;
-            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
-            border-color: var(--accent);
             transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--accent);
         }
 
+        /* MODULES */
         .label {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.7rem;
@@ -94,18 +126,15 @@ permalink: /misc/
             letter-spacing: 1px;
         }
 
-        .haiku { font-family: 'Space Grotesk', sans-serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; }
-        .spotify-mini { display: flex; align-items: center; gap: 1rem; margin: auto 0; }
-        .vinyl { width: 50px; height: 50px; border-radius: 50%; background: #222; animation: rotate 10s linear infinite; }
-        .thoughts { font-family: 'Syne', sans-serif; font-size: 1.2rem; line-height: 1.3; }
-        
-        .research-item { font-size: 0.95rem; line-height: 1.5; color: var(--text); font-family: 'Space Grotesk', sans-serif; }
-        .research-item strong { color: var(--accent); }
+        .research-item { font-size: 0.95rem; line-height: 1.5; font-family: 'Space Grotesk', sans-serif; }
+        .spotify-mini { display: flex; align-items: center; gap: 1rem; margin-top: auto; }
+        .vinyl { width: 45px; height: 45px; border-radius: 50%; background: #222; animation: rotate 10s linear infinite; }
+        .haiku { font-family: 'Space Grotesk', sans-serif; font-style: italic; line-height: 1.6; }
 
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        @media (max-width: 600px) {
-            nav { flex-direction: column; align-items: flex-start; gap: 1rem; }
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1rem; text-align: center; }
             .grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -129,17 +158,15 @@ permalink: /misc/
 
     <div class="grid">
         <div class="card" style="grid-column: span 2;">
-            <div class="label">The Research Lab</div>
+            <div class="label">Current Focus</div>
             <div class="research-item">
-                Currently investigating <strong>Point Cloud Registration</strong> techniques for dynamic environments. 
-                Focusing on making registration more robust to noise while keeping the inference time low enough for real-time applications.
-                <br><br>
-                <span style="opacity: 0.6; font-size: 0.8rem;">📍 Sweden Life • PhD Year 1</span>
+                Currently investigating <strong>Point Cloud Registration</strong> techniques. 
+                Optimizing for real-time inference in dynamic Swedish environments.
             </div>
         </div>
 
         <div class="card">
-            <div class="label">The Loop</div>
+            <div class="label">On Repeat</div>
             <div class="spotify-mini">
                 <div class="vinyl"></div>
                 <div>
@@ -149,43 +176,30 @@ permalink: /misc/
             </div>
         </div>
 
-        <div class="card" style="grid-row: span 2;">
-            <div class="label">Brain Dump</div>
-            <p class="thoughts">Why do we call it "debugging" when we are actually just creating more exciting bugs?</p>
-            <div style="margin-top: auto; border-top: 1px solid #f9f9f9; padding-top: 1rem;">
-                <div class="label" style="font-size: 0.6rem;">Goals</div>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">
-                    • Learn Rust (seriously)<br>
-                    • Touch actual grass<br>
-                    • Fix that one stubborn div
-                </p>
-            </div>
-        </div>
-
         <div class="card">
-            <div class="label">3 AM Thoughts</div>
+            <div class="label">Haiku #42</div>
             <p class="haiku">Code breaks in the night,<br>Coffee mug is empty now,<br>Sunlight hurts my eyes.</p>
         </div>
 
         <div class="card">
-            <div class="label">The Shelf</div>
-            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;">
-                <div style="margin-bottom: 0.5rem;">Dark Forest <span style="float: right; color: var(--accent);">★ 5</span></div>
-                <div style="margin-bottom: 0.5rem;">Neuromancer <span style="float: right; color: var(--accent);">★ 4.5</span></div>
-                <div style="opacity: 0.5;">Dune (Reading...)</div>
-            </div>
+            <div class="label">Reading</div>
+            <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;">
+                Dune — Frank Herbert <br>
+                <span style="color: var(--accent);">Progress: 65%</span>
+            </p>
         </div>
     </div>
 
     <script>
-        gsap.from("header > *", { opacity: 0, y: 20, duration: 1, stagger: 0.2 });
-        gsap.from(".card", { 
-            opacity: 0, 
-            y: 30, 
-            duration: 0.8, 
-            stagger: 0.1, 
-            delay: 0.4,
-            ease: "power2.out" 
+        // Only run animation if elements are present
+        window.addEventListener('load', () => {
+            gsap.from(".card", { 
+                opacity: 0, 
+                y: 20, 
+                duration: 0.6, 
+                stagger: 0.1, 
+                ease: "power1.out" 
+            });
         });
     </script>
 </body>
