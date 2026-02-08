@@ -378,6 +378,27 @@ permalink: /misc/
             opacity: 1 !important;
         }
 
+        .haiku-button {
+            display: inline-block !important;
+            margin-top: 1rem !important;
+            padding: 0.6rem 1.2rem !important;
+            background: rgba(90, 135, 161, 0.1) !important;
+            color: #5a87a1 !important;
+            text-decoration: none !important;
+            border-radius: 4px !important;
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid rgba(90, 135, 161, 0.2) !important;
+            opacity: 1 !important;
+        }
+
+        .haiku-button:hover {
+            background: rgba(90, 135, 161, 0.2) !important;
+            transform: translateX(4px) !important;
+        }
+
         /* Reading Card */
         .book-cover {
             width: 100% !important;
@@ -553,7 +574,7 @@ permalink: /misc/
             <div class="card card-small">
                 <div class="label">Currently In</div>
                 <div class="location-content">
-                    <div class="location-icon">SW</div>
+                    <div class="location-icon">🇸🇪</div>
                     <div>
                         <div class="location-text">Linköping, Sweden</div>
                         <div class="location-subtext">From New Delhi</div>
@@ -582,19 +603,20 @@ permalink: /misc/
 
             <!-- Haiku -->
             <div class="card card-small">
-                <div class="label">Haiku #42</div>
+                <div class="label">Haiku of the Day</div>
                 <p class="haiku">
-                    Code breaks in the night,<br>
-                    Coffee mug is empty now,<br>
-                    Sunlight hurts my eyes.
+                    Anxious for future;<br>
+                    Sabotaging my present;<br>
+                    Reminiscing past.
                 </p>
+                <a href="/haikus" class="haiku-button">View All Haikus →</a>
             </div>
 
             <!-- Current Reading -->
             <div class="card card-small">
                 <div class="label">Currently Reading</div>
                 <div class="book-cover">📚</div>
-                <div class="book-title"> Red rising</div>
+                <div class="book-title">Red Rising</div>
                 <div class="book-author">Pierce Brown</div>
             </div>
 
