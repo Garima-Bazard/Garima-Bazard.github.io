@@ -367,6 +367,102 @@ permalink: /misc/
             opacity: 1 !important;
         }
 
+        /* Spotify Stats Card */
+        .spotify-stats {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+            opacity: 1 !important;
+        }
+
+        .stats-column {
+            opacity: 1 !important;
+        }
+
+        .stats-heading {
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+            color: #2d2d2d !important;
+            margin-bottom: 1rem !important;
+            padding-bottom: 0.5rem !important;
+            border-bottom: 2px solid rgba(90, 135, 161, 0.2) !important;
+            opacity: 1 !important;
+        }
+
+        .stats-list {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+            opacity: 1 !important;
+        }
+
+        .stat-row {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            padding: 0.5rem !important;
+            border-radius: 6px !important;
+            transition: background 0.2s ease !important;
+            opacity: 1 !important;
+        }
+
+        .stat-row:hover {
+            background: rgba(90, 135, 161, 0.05) !important;
+        }
+
+        .rank {
+            font-family: 'Syne', sans-serif !important;
+            font-size: 1.1rem !important;
+            font-weight: 800 !important;
+            color: #5a87a1 !important;
+            width: 24px !important;
+            text-align: center !important;
+            flex-shrink: 0 !important;
+            opacity: 1 !important;
+        }
+
+        .artist-thumb {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+            flex-shrink: 0 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            opacity: 1 !important;
+        }
+
+        .stat-info {
+            flex: 1 !important;
+            min-width: 0 !important;
+            opacity: 1 !important;
+        }
+
+        .stat-name {
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+            color: #2d2d2d !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            opacity: 1 !important;
+        }
+
+        .stat-meta {
+            font-size: 0.75rem !important;
+            color: #6b6b6b !important;
+            margin-top: 0.1rem !important;
+            opacity: 1 !important;
+        }
+
+        @media (max-width: 768px) {
+            .spotify-stats {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+
         /* Haiku Card */
         .haiku { 
             font-family: 'Space Grotesk', sans-serif !important; 
@@ -582,20 +678,105 @@ permalink: /misc/
                 </div>
             </div>
 
-            <!-- Now Playing -->
-            <div class="card card-medium">
-                <div class="label">On Repeat</div>
-                <div class="song-info">
-                    <div class="song-avatar"></div>
-                    <div class="song-details">
-                        <div class="song-title">Cheerleader</div>
-                        <div class="song-artist">JP Cooper</div>
+            <!-- Spotify Stats -->
+            <div class="card card-wide">
+                <div class="label">Spotify Wrapped - January 2026</div>
+                <div class="spotify-stats">
+                    <div class="stats-column">
+                        <h3 class="stats-heading">Top Artists</h3>
+                        <div class="stats-list">
+                            <div class="stat-row">
+                                <span class="rank">1</span>
+                                <img src="b1.png" alt="Metallica" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">Metallica</div>
+                                    <div class="stat-meta">New to top 5</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">2</span>
+                                <img src="b2.png" alt="Megadeth" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">Megadeth</div>
+                                    <div class="stat-meta">2 months in top 5</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">3</span>
+                                <img src="b3.png" alt="Helloween" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">Helloween</div>
+                                    <div class="stat-meta">New to top 5</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">4</span>
+                                <img src="b4.png" alt="ANGRA" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">ANGRA</div>
+                                    <div class="stat-meta">New to top 5</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">5</span>
+                                <img src="b5.png" alt="Avenged Sevenfold" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">Avenged Sevenfold</div>
+                                    <div class="stat-meta">2 months in top 5</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats-column">
+                        <h3 class="stats-heading">Top Songs</h3>
+                        <div class="stats-list">
+                            <div class="stat-row">
+                                <span class="rank">1</span>
+                                <img src="s1.png" alt="Wuthering Heights" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">Wuthering Heights</div>
+                                    <div class="stat-meta">ANGRA • 12 plays</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">2</span>
+                                <img src="s2.png" alt="Holy Diver" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">Holy Diver</div>
+                                    <div class="stat-meta">Dio • 9 plays</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">3</span>
+                                <img src="s3.png" alt="Wind Of Change" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">Wind Of Change</div>
+                                    <div class="stat-meta">Scorpions • 8 plays</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">4</span>
+                                <img src="s4.png" alt="I Want to Know What Love Is" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">I Want to Know What Love Is</div>
+                                    <div class="stat-meta">Foreigner • 7 plays</div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="rank">5</span>
+                                <img src="s5.png" alt="A Tout Le Monde" class="artist-thumb">
+                                <div class="stat-info">
+                                    <div class="stat-name">A Tout Le Monde</div>
+                                    <div class="stat-meta">Megadeth • 7 plays</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Current Mood -->
-            <div class="card card-medium">
+            <div class="card card-small">
                 <div class="label">Current Mood</div>
                 <div class="mood-emoji">🎵</div>
                 <div class="mood-text">Curious & Vibing</div>
