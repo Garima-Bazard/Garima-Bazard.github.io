@@ -1,0 +1,574 @@
+---
+layout: null
+permalink: /haikus/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haikus | Garima</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #2d2d2d;
+            --text-muted: #6b6b6b;
+            --accent: #5a87a1;
+            --border: #e8e8e8;
+            --card-bg: #fafafa;
+        }
+
+        * { box-sizing: border-box !important; }
+
+        html,
+        body {
+            opacity: 1 !important;
+            filter: none !important;
+            visibility: visible !important;
+            background-color: #fff !important;
+            color: #333332 !important;
+            font-family: 'PT Serif', serif !important;
+            -webkit-font-smoothing: antialiased !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body * {
+            opacity: inherit !important;
+            filter: none !important;
+            visibility: visible !important;
+        }
+
+        /* NAVBAR - MATCHING ORIGINAL SITE EXACTLY */
+        .navigation-wrapper {
+            width: 100% !important;
+            padding: 2em 0 0 !important;
+            margin: 0 auto !important;
+            font-family: 'PT Sans Narrow', sans-serif !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            opacity: 1 !important;
+            background: #fff !important;
+        }
+
+        .navigation-wrapper::before,
+        .navigation-wrapper::after {
+            display: table !important;
+            content: "" !important;
+        }
+
+        .navigation-wrapper::after {
+            clear: both !important;
+        }
+
+        .site-name {
+            display: block !important;
+            width: 83.33333333333334% !important;
+            margin: 0 auto 1em !important;
+            margin-left: 8.333333333333334% !important;
+            margin-right: 8.333333333333334% !important;
+            font-size: 1.5rem !important;
+            opacity: 1 !important;
+        }
+
+        @media only screen and (min-width: 37.5em) {
+            .site-name {
+                display: inline !important;
+                float: left !important;
+                width: 16.666666666666668% !important;
+                margin-right: 4.166666666666667% !important;
+                margin-left: 4.166666666666667% !important;
+                font-size: 1rem !important;
+            }
+        }
+
+        @media only screen and (min-width: 86.375em) {
+            .site-name {
+                width: 12.5% !important;
+                margin-left: 16.666666666666668% !important;
+            }
+        }
+
+        .site-name a {
+            text-decoration: none !important;
+            color: #333332 !important;
+            opacity: 1 !important;
+        }
+
+        .site-name a:hover {
+            color: #010101 !important;
+        }
+
+        .top-navigation {
+            display: block !important;
+            width: 83.33333333333334% !important;
+            margin: 0 auto 1em !important;
+            margin-left: 8.333333333333334% !important;
+            margin-right: 8.333333333333334% !important;
+            opacity: 1 !important;
+        }
+
+        @media only screen and (min-width: 37.5em) {
+            .top-navigation {
+                display: inline !important;
+                float: left !important;
+                width: 75% !important;
+                margin-right: 0 !important;
+                margin-left: 0 !important;
+            }
+        }
+
+        @media only screen and (min-width: 86.375em) {
+            .top-navigation {
+                width: 66.66666666666667% !important;
+            }
+        }
+
+        .top-navigation ul {
+            padding: 0 !important;
+            margin: 0 !important;
+            clear: both !important;
+            list-style-type: none !important;
+            opacity: 1 !important;
+        }
+
+        .top-navigation li {
+            display: block !important;
+            font-size: 1rem !important;
+            list-style-type: none !important;
+            border-bottom: 1px solid rgba(17, 17, 17, 0.1) !important;
+            opacity: 1 !important;
+        }
+
+        .top-navigation li:last-child {
+            border-bottom: 0 solid transparent !important;
+        }
+
+        @media only screen and (min-width: 37.5em) {
+            .top-navigation li {
+                display: inline !important;
+                margin-right: 25px !important;
+                white-space: nowrap !important;
+                border-bottom: 0 solid transparent !important;
+            }
+        }
+
+        .top-navigation li a {
+            display: block !important;
+            padding: 10px 0 !important;
+            border-bottom: 0 solid transparent !important;
+            text-decoration: none !important;
+            color: #333332 !important;
+            transition: all 0.2s !important;
+            opacity: 1 !important;
+        }
+
+        @media only screen and (min-width: 37.5em) {
+            .top-navigation li a {
+                display: inline !important;
+                padding: 0 !important;
+            }
+        }
+
+        .top-navigation li a:visited {
+            color: #676767 !important;
+        }
+
+        .top-navigation li a:hover {
+            color: #010101 !important;
+        }
+
+        /* PAGE CONTENT */
+        .container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 3rem !important;
+            opacity: 1 !important;
+        }
+
+        header {
+            padding: 4rem 0 3rem !important;
+            opacity: 1 !important;
+        }
+
+        header h1 {
+            font-family: 'Syne', sans-serif !important;
+            font-size: clamp(3rem, 8vw, 5.5rem) !important;
+            font-weight: 800 !important;
+            color: #2d2d2d !important;
+            letter-spacing: -3px !important;
+            line-height: 1 !important;
+            margin-bottom: 1rem !important;
+            opacity: 1 !important;
+        }
+
+        header p {
+            font-family: 'Space Grotesk', sans-serif !important;
+            color: #6b6b6b !important;
+            font-size: 1.25rem !important;
+            font-weight: 400 !important;
+            margin-bottom: 0.5rem !important;
+            opacity: 1 !important;
+        }
+
+        .header-line {
+            width: 60px !important;
+            height: 3px !important;
+            background: var(--accent) !important;
+            margin-top: 2rem !important;
+            opacity: 1 !important;
+        }
+
+        /* BACK LINK */
+        .back-link {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            color: #5a87a1 !important;
+            text-decoration: none !important;
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 2rem !important;
+            transition: transform 0.3s ease !important;
+            opacity: 1 !important;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px) !important;
+        }
+
+        /* HAIKUS GRID */
+        .haikus-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+            gap: 2rem !important;
+            padding-bottom: 5rem !important;
+            margin-top: 3rem !important;
+            opacity: 1 !important;
+        }
+
+        .haiku-card {
+            border: 1px solid #d1d5db !important;
+            border-radius: 8px !important;
+            padding: 2rem !important;
+            background: #ffffff !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            min-height: 220px !important;
+        }
+
+        .haiku-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 3px !important;
+            background: linear-gradient(90deg, var(--accent), transparent) !important;
+            transform: scaleX(0) !important;
+            transform-origin: left !important;
+            transition: transform 0.3s ease !important;
+            opacity: 1 !important;
+        }
+
+        .haiku-card:hover {
+            border-color: #5a87a1 !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+            transform: translateY(-4px) !important;
+        }
+
+        .haiku-card:hover::before {
+            transform: scaleX(1) !important;
+        }
+
+        .haiku-text {
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-style: italic !important;
+            line-height: 1.9 !important;
+            font-size: 1.05rem !important;
+            color: #2d2d2d !important;
+            font-weight: 400 !important;
+            opacity: 1 !important;
+            text-align: center !important;
+        }
+
+        .haiku-number {
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            color: #5a87a1 !important;
+            margin-bottom: 1rem !important;
+            letter-spacing: 1.5px !important;
+            opacity: 1 !important;
+            text-align: center !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 2rem !important;
+            }
+            .haikus-grid {
+                grid-template-columns: 1fr !important;
+            }
+            header h1 {
+                font-size: 3rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navigation-wrapper">
+        <div class="site-name">
+            <a href="/">GARIMA'S SITE</a>
+        </div>
+        <div class="top-navigation">
+            <nav role="navigation" id="site-nav" class="nav">
+                <ul>
+                    <li><a href="/cv">CV</a></li>
+                    <li><a href="/code">PROJECTS</a></li>
+                    <li><a href="/blog">BLOG</a></li>
+                    <li><a href="/misc">MISC</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <a href="/misc" class="back-link">← Back to Side Quests</a>
+            <h1>Haikus</h1>
+            <p>Random thoughts in 5-7-5 syllables (or not).</p>
+            <div class="header-line"></div>
+        </header>
+
+        <div class="haikus-grid">
+            
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #1</div>
+                <p class="haiku-text">
+                    Ain't the sky, the trees,<br>
+                    the wind & the bird poop on your<br>
+                    head just nature's grace.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #2</div>
+                <p class="haiku-text">
+                    In a veg sandwich<br>
+                    some random vegetables<br>
+                    get sandwiched is all.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #3</div>
+                <p class="haiku-text">
+                    Meant to be team work..<br>
+                    Then how did I end up doing<br>
+                    all of it alone...
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #4</div>
+                <p class="haiku-text">
+                    When hiking with friends<br>
+                    click some pictures, for you will<br>
+                    cherish them later.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #5</div>
+                <p class="haiku-text">
+                    On seeing humans,<br>
+                    the zoo animals say, "look..<br>
+                    who's here to amuse us."
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #6</div>
+                <p class="haiku-text">
+                    I was busy adjusting<br>
+                    rear view mirror but is was<br>
+                    the dirty rear windshield.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #7</div>
+                <p class="haiku-text">
+                    Gazing in the pond,<br>
+                    we stood, but swans just had to<br>
+                    spoil our reflection.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #8</div>
+                <p class="haiku-text">
+                    Sunny days are fiery;<br>
+                    Drink those cold drinks;<br>
+                    While the ice cube clinks.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #9</div>
+                <p class="haiku-text">
+                    Coming online...<br>
+                    some amiable, some belligerent,<br>
+                    some fun people pop up.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #10</div>
+                <p class="haiku-text">
+                    The glass gave up<br>
+                    on being a glass after seeing<br>
+                    some silver shine.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #11</div>
+                <p class="haiku-text">
+                    There's much to learn,<br>
+                    Will one lifetime be enough?<br>
+                    Of course not! Shame!
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #12</div>
+                <p class="haiku-text">
+                    So much to do but<br>
+                    Here I sit doing nothing.<br>
+                    Panicked! Overwhelmed!
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #13</div>
+                <p class="haiku-text">
+                    Anxious for future;<br>
+                    Sabotaging my present;<br>
+                    Reminiscing past.
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #14</div>
+                <p class="haiku-text">
+                    Wanna be a cloud and<br>
+                    drift around
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #15</div>
+                <p class="haiku-text">
+                    Stood in the queue..<br>
+                    For potatoes but know what.<br>
+                    I got spaghetti..
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #16</div>
+                <p class="haiku-text">
+                    Wanna be a cloud<br>
+                    But not here on earth<br>
+                    On jupiter
+                </p>
+            </div>
+
+            <div class="haiku-card">
+                <div class="haiku-number">Haiku #17</div>
+                <p class="haiku-text">
+                    The sky is weeping.<br>
+                    Cold wind, dry skin, dry lips<br>
+                    no cream, no umbrella.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Force opacity to 1 immediately on page load
+        (function() {
+            document.documentElement.style.setProperty('opacity', '1', 'important');
+            document.body.style.setProperty('opacity', '1', 'important');
+            document.body.style.setProperty('filter', 'none', 'important');
+            document.body.style.setProperty('visibility', 'visible', 'important');
+        })();
+
+        // Smooth entrance animation with stagger
+        gsap.from(".haiku-card", { 
+            opacity: 0, 
+            y: 30, 
+            duration: 0.8, 
+            stagger: 0.08, 
+            ease: "power3.out",
+            delay: 0.2,
+            onComplete: function() {
+                document.querySelectorAll('.haiku-card').forEach(card => {
+                    card.style.setProperty('opacity', '1', 'important');
+                });
+            }
+        });
+
+        // Animate header
+        gsap.from("header h1", {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            ease: "power2.out",
+            onComplete: function() {
+                document.querySelector('header h1').style.setProperty('opacity', '1', 'important');
+            }
+        });
+
+        gsap.from("header p, .header-line, .back-link", {
+            opacity: 0,
+            y: 10,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out",
+            delay: 0.2,
+            onComplete: function() {
+                document.querySelectorAll('header p, .header-line, .back-link').forEach(el => {
+                    el.style.setProperty('opacity', '1', 'important');
+                });
+            }
+        });
+
+        // Additional safeguard
+        let counter = 0;
+        const interval = setInterval(() => {
+            document.body.style.setProperty('opacity', '1', 'important');
+            document.body.style.setProperty('filter', 'none', 'important');
+            counter++;
+            if (counter > 20) clearInterval(interval);
+        }, 100);
+    </script>
+</body>
+</html>
