@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Generative Diffusion Models: A Prelude 
