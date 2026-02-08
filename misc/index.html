@@ -330,43 +330,6 @@ permalink: /misc/
             opacity: 1 !important;
         }
 
-        /* Song Card */
-        .song-info {
-            display: flex !important;
-            align-items: center !important;
-            gap: 1.25rem !important;
-            opacity: 1 !important;
-        }
-
-        .song-avatar {
-            width: 60px !important;
-            height: 60px !important;
-            border-radius: 8px !important;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-            flex-shrink: 0 !important;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
-            opacity: 1 !important;
-        }
-
-        .song-details {
-            flex: 1 !important;
-            opacity: 1 !important;
-        }
-
-        .song-title {
-            font-weight: 600 !important;
-            color: #2d2d2d !important;
-            font-size: 1.1rem !important;
-            margin-bottom: 0.25rem !important;
-            opacity: 1 !important;
-        }
-
-        .song-artist {
-            font-size: 0.95rem !important;
-            color: #6b6b6b !important;
-            opacity: 1 !important;
-        }
-
         /* Spotify Stats Card */
         .spotify-stats {
             display: grid !important;
@@ -498,14 +461,10 @@ permalink: /misc/
         /* Reading Card */
         .book-cover {
             width: 100% !important;
-            height: 180px !important;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+            height: 240px !important;
             border-radius: 6px !important;
             margin-bottom: 1rem !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-size: 3rem !important;
+            object-fit: cover !important;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
             opacity: 1 !important;
         }
@@ -524,34 +483,67 @@ permalink: /misc/
             opacity: 1 !important;
         }
 
-        /* Stats Card */
-        .stat-grid {
+        /* Sports Card */
+        .sports-list {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
-            gap: 1.5rem !important;
+            gap: 1rem !important;
             opacity: 1 !important;
         }
 
-        .stat-item {
+        .sport-item {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
             text-align: center !important;
+            padding: 0.75rem !important;
+            border-radius: 6px !important;
+            transition: background 0.2s ease !important;
             opacity: 1 !important;
         }
 
-        .stat-number {
-            font-family: 'Syne', sans-serif !important;
+        .sport-item:hover {
+            background: rgba(90, 135, 161, 0.05) !important;
+        }
+
+        .sport-emoji {
             font-size: 2.5rem !important;
-            font-weight: 800 !important;
-            color: #5a87a1 !important;
-            line-height: 1 !important;
             margin-bottom: 0.5rem !important;
             opacity: 1 !important;
         }
 
-        .stat-label {
+        .sport-name {
+            font-family: 'Space Grotesk', sans-serif !important;
             font-size: 0.85rem !important;
-            color: #6b6b6b !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
+            font-weight: 600 !important;
+            color: #2d2d2d !important;
+            opacity: 1 !important;
+        }
+
+        /* Cooking Card */
+        .cooking-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            opacity: 1 !important;
+        }
+
+        .cooking-image {
+            width: 100% !important;
+            height: 180px !important;
+            border-radius: 6px !important;
+            object-fit: cover !important;
+            margin-bottom: 1rem !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+            opacity: 1 !important;
+        }
+
+        .cooking-caption {
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-size: 0.95rem !important;
+            color: #2d2d2d !important;
+            text-align: center !important;
+            font-weight: 500 !important;
             opacity: 1 !important;
         }
 
@@ -582,22 +574,6 @@ permalink: /misc/
             opacity: 1 !important;
         }
 
-        /* Mood Card */
-        .mood-emoji {
-            font-size: 4rem !important;
-            text-align: center !important;
-            margin-bottom: 1rem !important;
-            opacity: 1 !important;
-        }
-
-        .mood-text {
-            text-align: center !important;
-            font-size: 1rem !important;
-            color: #2d2d2d !important;
-            font-weight: 500 !important;
-            opacity: 1 !important;
-        }
-
         /* Responsive Design */
         @media (max-width: 1024px) {
             .card-wide { grid-column: span 12 !important; }
@@ -620,6 +596,9 @@ permalink: /misc/
             }
             header h1 {
                 font-size: 3rem !important;
+            }
+            .sports-list {
+                grid-template-columns: 1fr !important;
             }
         }
     </style>
@@ -770,25 +749,35 @@ permalink: /misc/
                 </div>
             </div>
 
-            <!-- Current Mood -->
+            <!-- Sports Card -->
             <div class="card card-small">
-                <div class="label">Currently playing the sports</div>
-                <div class="mood-emoji>🏸</div>
-                <div class="mood-text">Badminton</div>
-                <div class="mood-emoji>🏓</div>
-                <div class="mood-text">Table Tennis</div>
-                <div class="mood-emoji>🥍</div>
-                <div class="mood-text">Floorball</div>
-                <div class="mood-emoji>🎾</div>
-                <div class="mood-text">Squash</div>
+                <div class="label">Currently Playing</div>
+                <div class="sports-list">
+                    <div class="sport-item">
+                        <div class="sport-emoji">🏸</div>
+                        <div class="sport-name">Badminton</div>
+                    </div>
+                    <div class="sport-item">
+                        <div class="sport-emoji">🏓</div>
+                        <div class="sport-name">Table Tennis</div>
+                    </div>
+                    <div class="sport-item">
+                        <div class="sport-emoji">🥍</div>
+                        <div class="sport-name">Floorball</div>
+                    </div>
+                    <div class="sport-item">
+                        <div class="sport-emoji">🎾</div>
+                        <div class="sport-name">Squash</div>
+                    </div>
+                </div>
             </div>
 
             <!-- Haiku -->
             <div class="card card-small">
                 <div class="label">Haiku of the Day</div>
                 <p class="haiku">
-                    I was busy adjusting;<br>
-                    rear view mirror but is was;<br>
+                    I was busy adjusting<br>
+                    rear view mirror but it was<br>
                     the dirty rear windshield.
                 </p>
                 <a href="/haikus" class="haiku-button">View All Haikus →</a>
@@ -797,23 +786,17 @@ permalink: /misc/
             <!-- Current Reading -->
             <div class="card card-small">
                 <div class="label">Currently Reading</div>
-                <div class="book-cover">📚</div>
+                <img src="book.png" alt="Red Rising" class="book-cover">
                 <div class="book-title">Red Rising</div>
                 <div class="book-author">Pierce Brown</div>
             </div>
 
-            <!-- Quick Stats -->
+            <!-- Cooked This Week -->
             <div class="card card-small">
-                <div class="label">This Week</div>
-                <div class="stat-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">42</div>
-                        <div class="stat-label">Commits</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">8</div>
-                        <div class="stat-label">Papers Read</div>
-                    </div>
+                <div class="label">Cooked This Week</div>
+                <div class="cooking-content">
+                    <img src="cooking.png" alt="Dish of the week" class="cooking-image">
+                    <div class="cooking-caption">Add your caption here</div>
                 </div>
             </div>
         </div>
