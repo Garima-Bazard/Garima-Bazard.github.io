@@ -14,5 +14,5 @@ Previously, I was doing the EMJMD PSRS masters that took me from France to Finla
 
 
 <br />
-Aside from my academic pursuits, I love music and sports. I am crazy about the game of cricket and playing badminton brings me immense joy. Discovering new music and getting lost in the poetry behind lyrics is my favourite thing to do in my free time. 
+Aside from my academic pursuits, I love music and sports. I am crazy about the game of cricket and playing badminton brings me immense joy. Discovering new music and getting lost in the poetry behind lyrics is my favourite thing to do in my free time. Find more in Misc :)
 
