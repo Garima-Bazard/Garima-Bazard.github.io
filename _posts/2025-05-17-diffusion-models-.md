@@ -71,10 +71,7 @@ But the problem is that Reverse process is based on a Markov chain as explained 
 
 Once trained, the denoising module/reverse diffusion module is directly used to generate new data. To do so, a sample is taken from the Gaussian noise and is then iteratively denoised, leading to the generation of data from noise.
 
-#### 4. Diffusion in Point Cloud Registration
-The success of diffusion models has inspired several works in the field of Point Cloud Registration (PCR). These works formulate PCR as a denoising diffusion process, either by attempting to generate a correct transformation from a noisy transformation [9, 10] or by attempting to obtain correct correspondence from a noisy correspondence matrix [11]. Similar to how DDPM [1] introduces a Forward process (data to noise) and a Reverse process (noise to data), these works introduce frameworks that work via a Forward and a Reverse process. The authors of [9, 11] suggest that the diffusion process acts as a natural data augmenter and helps create diversity in the training set, thus leading to far better generalizability.
 
-For instance, [9] introduces a diffusion-inspired PCR model, with the SE(3) Diffusion process. This differs from the standard diffusion processes (such as [1]), which...
 
 <br />
 <hr />
