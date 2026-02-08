@@ -1,12 +1,11 @@
+
 ---
 layout: post
-title: "Generative Diffusion Models: A Prelude"
-date: 2025-02-09
-categories: research machine-learning
-tags: [diffusion-models, deep-learning, generative-models, point-cloud-registration]
-author: Garima
-excerpt: "An introduction to diffusion probabilistic models."
+title: Generative Diffusion Models: A Prelude 
+description: An introduction to diffusion probabilistic models.
+comments: true
 ---
+
 
 # Generative Diffusion Models: a prelude
 
