@@ -44,7 +44,9 @@ The Forward process is also known as the Diffusion process, and it involves addi
 
 The Forward process can be represented as the distribution:
 
-$$f(x_t|x_{t-1}) = \mathcal{N}\left(x_t; \sqrt{1 - \beta_t}x_{t-1}, \beta_t I\right) \tag{3.1}$$
+$$
+f(x_t|x_{t-1}) = \mathcal{N}\left(x_t; \sqrt{1 - \beta_t}x_{t-1}, \beta_t I\right) \tag{3.1}
+$$
 
 Here,
 
@@ -55,7 +57,9 @@ Here,
 
 But instead of adding noise step-by-step, a closed form formula exists for $x_t$ i.e. for the distribution $q(x_t|x_0)$. As shown in [6]:
 
-$$x_t = \sqrt{\bar{\alpha}_t}x_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon, \quad \epsilon \sim \mathcal{N}(0, I) \tag{3.2}$$
+$$
+x_t = \sqrt{\bar{\alpha}_t}x_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon, \quad \epsilon \sim \mathcal{N}(0, I) \tag{3.2}
+$$
 
 Here,
 
@@ -68,7 +72,9 @@ Equation 3.2 allows for direct computation of noisy data at any given timestamp,
 
 The Reverse Diffusion, or simply the reverse process, learns to restore data from the noise. It aims to denoise noisy data. The reverse process can be thus represented by the distribution: $r(x_{t-1}|x_t)$, which is impossible to compute. A neural network thus learns to approximately predict a parameterised normal distribution, or in other words, learns to denoise the noisy data, i.e., $x_T$ to $x_0$. This can be represented via a reverse Markov chain: $x_T \rightarrow x_{T-1} \rightarrow ... \rightarrow x_0$. This approximated (learned) distribution, $p_\theta(x_{t-1}|x_t)$ can be expressed as:
 
-$$p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \beta_t I) \tag{3.3}$$
+$$
+p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \beta_t I) \tag{3.3}
+$$
 
 Here,
 
@@ -78,13 +84,19 @@ Here,
 
 The objective function, in theory, can be defined via the negative log likelihood of the denoised data, $x_0$, as:
 
-$$\text{Loss} = -\log(p_\theta(x_0)) \tag{3.4}$$
+$$
+\text{Loss} = -\log(p_\theta(x_0)) \tag{3.4}
+$$
 
 But the problem is that Reverse process is based on a Markov chain as explained above and thus, $x_0$ depends on $x_1, x_2, ..., x_T$. These are not computable as we don't have $r(x_{t-1}|x_t)$ distribution. To solve this problem, the authors of [6] derive a variational lower bound to indirectly optimise $-\log(p_\theta(x_0))$. To do so, they use the Kullback-Leibler (KL) divergence, a measure of how similar two distributions are. They obtain the KL divergence between $f(x_{1:T}|x_0)$, the desired (target) distribution, to which we have access, and $p_\theta(x_{1:T}|x_0)$, the approximated (learned) distribution. The terms are further simplified to eventually obtain the L2 norm as the optimising function, which needs to be minimised. The complete derivation for this is out of scope for this work and can be found in [6].
 
 Once trained, the denoising module/reverse diffusion module is directly used to generate new data. To do so, a sample is taken from the Gaussian noise and is then iteratively denoised, leading to the generation of data from noise.
 
+## Diffusion in Point Cloud Registration
 
+The success of diffusion models has inspired several works in the field of Point Cloud Registration (PCR). These works formulate PCR as a denoising diffusion process, either by attempting to generate a correct transformation from a noisy transformation [11, 56] or by attempting to obtain correct correspondence from a noisy correspondence matrix [8]. Similar to how DDPM [6] introduces a Forward process (data to noise) and a Reverse process (noise to data), these works introduce frameworks that work via a Forward and a Reverse process. The authors of [11, 8] suggest that the diffusion process acts as a natural data augmenter and helps create diversity in the training set, thus leading to far better generalizability.
+
+For instance, [11] introduces a diffusion-inspired PCR model, with the SE(3) Diffusion process. This differs from the standard diffusion processes (such as [6]), which
 
 <style>
 .figure {
