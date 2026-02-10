@@ -58,19 +58,21 @@ Here,
 But instead of adding noise step-by-step, a closed form formula exists for $x_t$ i.e. for the distribution $q(x_t|x_0)$. As shown in [6]:
 
 $$
-x_t = \sqrt{\bar{\alpha}_t}x_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon, \quad \epsilon \sim \mathcal{N}(0, I) \tag{3.2}
+x_t = \sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon, \quad \epsilon \sim \mathcal{N}(0, I)
 $$
 
 Here,
 
-- $\bar{\alpha}_t = \prod_{i=1}^{t} \alpha_i$. It is the cumulative product of $\alpha$'s up until t
-- $\alpha_i = 1 - \beta_i$; where $\beta_i$ is obtained according to the variance schedule $\beta_1, ..., \beta_T$
+* $\bar{\alpha}_t = \prod_{i=1}^{t} \alpha_i$. It is the cumulative product of $\alpha$'s up until t
+* $\alpha_i = 1 - \beta_i$; where $\beta_i$ is obtained according to the variance schedule $\beta_1, \dots, \beta_T$
 
 Equation 3.2 allows for direct computation of noisy data at any given timestamp, without needing to obtain the noisy samples for in between steps.
 
 ### Reverse process
 
-The Reverse Diffusion, or simply the reverse process, learns to restore data from the noise. It aims to denoise noisy data. The reverse process can be thus represented by the distribution: $r(x_{t-1}|x_t)$, which is impossible to compute. A neural network thus learns to approximately predict a parameterised normal distribution, or in other words, learns to denoise the noisy data, i.e., $x_T$ to $x_0$. This can be represented via a reverse Markov chain: $x_T \rightarrow x_{T-1} \rightarrow ... \rightarrow x_0$. This approximated (learned) distribution, $p_\theta(x_{t-1}|x_t)$ can be expressed as:
+The Reverse Diffusion, or simply the reverse process, learns to restore data from the noise. It aims to denoise noisy data. The reverse process can be thus represented by the distribution: $r(x_{t-1}|x_t)$, which is impossible to compute.
+
+A neural network thus learns to approximately predict a parameterised normal distribution, or in other words, learns to denoise the noisy data, i.e., $x_T$ to $x_0$. This can be represented via a reverse Markov chain: $x_T \rightarrow x_{T-1} \rightarrow \dots \rightarrow x_0$. This approximated (learned) distribution, $p_{\theta}(x_{t-1}|x_t)$ can be expressed as:
 
 $$
 p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \beta_t I) \tag{3.3}
