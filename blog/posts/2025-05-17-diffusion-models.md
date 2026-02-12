@@ -1,9 +1,4 @@
----
-layout: post
-title: "Generative Diffusion Models: A Prelude"
-description: "An introduction to diffusion probabilistic models"
-comments: true
----
+
 
 Diffusion probabilistic models, or simply Diffusion models [[1](#ref1), [2](#ref2), [3](#ref3), [4](#ref4)] have emerged as a popular choice for generative tasks in the last couple of years. These developments have consequently inspired a plethora of their application in various fields, including image generation [[5](#ref5)], object detection [[6](#ref6)], and image segmentation [[7](#ref7)], among others.
 
