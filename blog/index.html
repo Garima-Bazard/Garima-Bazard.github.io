@@ -1,0 +1,525 @@
+---
+layout: null
+permalink: /blog/
+title: Blog
+---
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+{% include _head.html %}
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+<!-- Marked.js -->
+<script src="https://cdn.jsdelivr.net/npm/marked@14.1.3/marked.min.js"></script>
+
+<!-- Highlight.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+<style>
+  /* ===== Blog List Styles ===== */
+  .blog-list-item {
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .blog-list-item:last-child {
+    border-bottom: none;
+  }
+  .blog-list-item h2 {
+    margin-bottom: 0.2rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  .blog-list-item h2 a {
+    color: #343434;
+    text-decoration: none;
+  }
+  .blog-list-item h2 a:hover {
+    color: #010101;
+  }
+  .blog-list-date {
+    font-size: 0.8rem;
+    color: #9a9a9a;
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.4rem;
+  }
+  .blog-list-desc {
+    font-size: 0.95rem;
+    color: #6b6b6b;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ===== Blog Post Styles ===== */
+  .post-back-link {
+    display: inline-block;
+    margin-bottom: 1.2rem;
+    font-size: 0.85rem;
+    color: #9a9a9a;
+    text-decoration: none;
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .post-back-link:hover {
+    color: #343434;
+  }
+  .post-back-link:before {
+    content: "\2190\00a0";
+  }
+
+  .post-meta-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .post-meta-header h1 {
+    margin-bottom: 0.3rem;
+  }
+  .post-meta-date {
+    font-size: 0.85rem;
+    color: #9a9a9a;
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== Rendered Markdown Content ===== */
+  .post-content {
+    font-family: 'PT Serif', serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #343434;
+  }
+  .post-content h1 { font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+  .post-content h2 { font-size: 1.5rem; margin-top: 2.2rem; margin-bottom: 0.8rem; border-bottom: 1px solid #e8e8e8; padding-bottom: 0.4rem; }
+  .post-content h3 { font-size: 1.25rem; margin-top: 1.8rem; margin-bottom: 0.6rem; }
+  .post-content h4 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+
+  .post-content p {
+    margin-bottom: 1.2rem;
+    margin-top: 0;
+  }
+  .post-content p + p {
+    margin-top: 0;
+  }
+
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 1.5rem auto;
+  }
+
+  .post-content blockquote {
+    padding-left: 20px;
+    margin-left: -28px;
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    border-left: 8px solid #333332;
+    color: #555;
+  }
+  .post-content blockquote p {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content ul, .post-content ol {
+    margin-bottom: 1.2rem;
+    padding-left: 1.8rem;
+  }
+  .post-content li {
+    margin-bottom: 0.4rem;
+    line-height: 1.7;
+  }
+
+  .post-content pre {
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    padding: 1em;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .post-content code {
+    font-family: Monaco, "Courier New", "DejaVu Sans Mono", monospace;
+    font-size: 0.85em;
+  }
+  .post-content p code, .post-content li code {
+    background-color: #efefef;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #e3e3e3;
+    font-size: 0.8em;
+  }
+  .post-content pre code {
+    background: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    font-size: inherit;
+  }
+
+  .post-content a {
+    color: #308cbc;
+    text-decoration: none;
+  }
+  .post-content a:hover {
+    text-decoration: underline;
+  }
+
+  .post-content hr {
+    border: 0;
+    border-top: 2px solid #e8e8e8;
+    margin: 2rem 0;
+  }
+
+  .post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  .post-content th, .post-content td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  .post-content th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+
+  /* KaTeX display math spacing */
+  .post-content .katex-display {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  /* Figure and caption (for inline HTML in posts) */
+  .post-content .figure {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .post-content .figure img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .post-content .caption {
+    font-size: 0.9rem;
+    color: #6b6b6b;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+  .post-content .equation-note {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #6b6b6b;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* References section */
+  .post-content .references {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #e8e8e8;
+  }
+  .post-content .references p {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Loading state */
+  .blog-loading {
+    text-align: center;
+    padding: 3rem 0;
+    color: #9a9a9a;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 1.1rem;
+  }
+
+  /* Footnotes */
+  .post-content .footnote-ref a {
+    font-size: 0.75em;
+    vertical-align: super;
+    text-decoration: none;
+  }
+</style>
+</head>
+
+<body class="page">
+
+{% include _browser-upgrade.html %}
+
+{% include _navigation.html %}
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    {% include _author-bio.html %}
+  </div>
+  <article>
+    <!-- Blog List View -->
+    <div id="blog-list-view">
+      <h1>Blog</h1>
+      <div id="blog-list"></div>
+    </div>
+
+    <!-- Blog Post View (hidden by default) -->
+    <div id="blog-post-view" style="display:none;">
+      <a href="#" class="post-back-link" onclick="goToList(); return false;">All Posts</a>
+      <div class="post-meta-header">
+        <h1 id="post-title"></h1>
+        <div class="post-meta-date" id="post-date"></div>
+      </div>
+      <div class="post-content" id="post-content"></div>
+    </div>
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <footer>
+    {% include _footer.html %}
+  </footer>
+</div><!-- /.footer-wrap -->
+
+{% include _scripts.html %}
+
+<script>
+// =============================================================
+// POST REGISTRY — Add new posts here (most recent first)
+// =============================================================
+const posts = [
+  {
+    slug: "diffusion-models",
+    file: "2025-05-17-diffusion-models.md",
+    title: "Generative Diffusion Models: A Prelude",
+    description: "An introduction to diffusion probabilistic models — covering the forward process, reverse process, and their application in point cloud registration.",
+    date: "2025-05-17"
+  }
+  // Add new posts above this line:
+  // {
+  //   slug: "your-post-slug",
+  //   file: "YYYY-MM-DD-filename.md",
+  //   title: "Post Title",
+  //   description: "A brief description.",
+  //   date: "YYYY-MM-DD"
+  // },
+];
+
+// =============================================================
+// CONFIGURATION
+// =============================================================
+const POSTS_DIR = "{{ site.url }}/blog/posts/";
+
+// =============================================================
+// MARKDOWN + MATH RENDERING
+// =============================================================
+
+/**
+ * Protect math blocks from marked.js by replacing them with placeholders,
+ * then restoring and rendering with KaTeX after markdown is parsed.
+ */
+function renderMarkdownWithMath(mdText) {
+  const mathBlocks = [];
+  let idx = 0;
+
+  // Strip YAML front matter if present
+  mdText = mdText.replace(/^---[\s\S]*?---\s*/, '');
+
+  // Protect <style> blocks — extract and re-append later
+  const styleBlocks = [];
+  mdText = mdText.replace(/<style[\s\S]*?<\/style>/gi, function(match) {
+    styleBlocks.push(match);
+    return '';
+  });
+
+  // 1. Protect display math: $$...$$  (multiline or single-line)
+  mdText = mdText.replace(/\$\$([\s\S]*?)\$\$/g, function(match, tex) {
+    const placeholder = `%%MATH_BLOCK_${idx}%%`;
+    mathBlocks.push({ placeholder, tex: tex.trim(), display: true });
+    idx++;
+    return placeholder;
+  });
+
+  // 2. Protect inline math: $...$  (single line, not greedy)
+  //    Negative lookbehind for \ to avoid matching \$
+  mdText = mdText.replace(/(?<![\\$])\$(?!\$)(.+?)(?<![\\$])\$(?!\$)/g, function(match, tex) {
+    const placeholder = `%%MATH_BLOCK_${idx}%%`;
+    mathBlocks.push({ placeholder, tex: tex.trim(), display: false });
+    idx++;
+    return placeholder;
+  });
+
+  // 3. Parse markdown
+  marked.setOptions({
+    gfm: true,
+    breaks: false,
+    headerIds: true,
+    mangle: false,
+    headerPrefix: '',
+    highlight: function(code, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        return hljs.highlight(code, { language: lang }).value;
+      }
+      return hljs.highlightAuto(code).value;
+    }
+  });
+
+  let html = marked.parse(mdText);
+
+  // 4. Restore math blocks — render with KaTeX
+  mathBlocks.forEach(function(block) {
+    let rendered;
+    try {
+      rendered = katex.renderToString(block.tex, {
+        displayMode: block.display,
+        throwOnError: false,
+        trust: true,
+        strict: false
+      });
+    } catch (e) {
+      rendered = '<span style="color:red;" title="' + e.message + '">' + block.tex + '</span>';
+    }
+    // The placeholder might have been wrapped in <p> tags by marked
+    html = html.replace(new RegExp('<p>\\s*' + escapeRegExp(block.placeholder) + '\\s*<\\/p>'), rendered);
+    html = html.replace(block.placeholder, rendered);
+  });
+
+  // 5. Re-inject style blocks into the content
+  if (styleBlocks.length > 0) {
+    html += '\n' + styleBlocks.join('\n');
+  }
+
+  return html;
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// =============================================================
+// DATE FORMATTING
+// =============================================================
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  const months = [
+    'January','February','March','April','May','June',
+    'July','August','September','October','November','December'
+  ];
+  return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+// =============================================================
+// RENDERING
+// =============================================================
+
+function renderBlogList() {
+  // Sort posts by date descending
+  const sorted = posts.slice().sort(function(a, b) {
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  const listEl = document.getElementById('blog-list');
+  if (sorted.length === 0) {
+    listEl.innerHTML = '<p style="color:#9a9a9a;">No posts yet. Check back soon!</p>';
+    return;
+  }
+
+  let html = '';
+  sorted.forEach(function(post) {
+    html += '<div class="blog-list-item">';
+    html += '  <div class="blog-list-date">' + formatDate(post.date) + '</div>';
+    html += '  <h2><a href="#' + post.slug + '">' + post.title + '</a></h2>';
+    html += '  <p class="blog-list-desc">' + post.description + '</p>';
+    html += '</div>';
+  });
+  listEl.innerHTML = html;
+}
+
+function showListView() {
+  document.getElementById('blog-list-view').style.display = '';
+  document.getElementById('blog-post-view').style.display = 'none';
+  document.title = "{{ site.title }} – Blog";
+}
+
+function showPostView(post, html) {
+  document.getElementById('blog-list-view').style.display = 'none';
+  document.getElementById('blog-post-view').style.display = '';
+  document.getElementById('post-title').textContent = post.title;
+  document.getElementById('post-date').textContent = formatDate(post.date);
+  document.getElementById('post-content').innerHTML = html;
+  document.title = "{{ site.title }} – " + post.title;
+
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+
+function goToList() {
+  window.location.hash = '';
+}
+
+async function loadPost(slug) {
+  const post = posts.find(function(p) { return p.slug === slug; });
+  if (!post) {
+    showListView();
+    return;
+  }
+
+  // Show loading state
+  document.getElementById('blog-list-view').style.display = 'none';
+  document.getElementById('blog-post-view').style.display = '';
+  document.getElementById('post-title').textContent = post.title;
+  document.getElementById('post-date').textContent = formatDate(post.date);
+  document.getElementById('post-content').innerHTML = '<div class="blog-loading">Loading...</div>';
+  document.title = "{{ site.title }} – " + post.title;
+
+  try {
+    const response = await fetch(POSTS_DIR + post.file);
+    if (!response.ok) throw new Error('Post not found');
+    const md = await response.text();
+    const html = renderMarkdownWithMath(md);
+    showPostView(post, html);
+  } catch (e) {
+    document.getElementById('post-content').innerHTML =
+      '<p style="color:#c64537;">Failed to load post. Please try again.</p>';
+  }
+}
+
+// =============================================================
+// ROUTING
+// =============================================================
+function handleRoute() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    loadPost(hash);
+  } else {
+    showListView();
+  }
+}
+
+window.addEventListener('hashchange', handleRoute);
+
+// Init on page load — wait for libs
+document.addEventListener('DOMContentLoaded', function() {
+  renderBlogList();
+  handleRoute();
+});
+</script>
+
+</body>
+</html>
