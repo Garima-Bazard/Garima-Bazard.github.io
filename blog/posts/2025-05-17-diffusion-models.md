@@ -9,7 +9,7 @@ To quote [[2](#ref2)], the authors describe the idea as follows:
 > "The essential idea, inspired by non-equilibrium statistical physics, is to systematically and slowly destroy structure in a data distribution through an iterative forward diffusion process. We then learn a reverse diffusion process that restores structure in data, yielding a highly flexible and tractable generative model of the data."
 
 <div class="figure">
-  <img src="/assets/images/diff.svg" alt="Diffusion Process Illustration" style="max-width:100%;height:auto;width:800px;">
+  <img src="/assets/images/diff.png" alt="Diffusion Process Illustration" style="max-width:100%;height:auto;width:800px;">
   <p class="caption"><strong>Figure 1:</strong> An illustration of the Diffusion process. The process involves a forward process, which adds noise to the data via a noise scheduler (such as cosine schedule in this case) and a learned reverse process, which attempts to remove the noise added during the forward process incrementally.</p>
 </div>
 
