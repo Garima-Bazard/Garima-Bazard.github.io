@@ -221,7 +221,6 @@ title: Blog
     border-radius: 0;
     box-shadow: none;
   }
-  
   .post-content .caption {
     font-size: 0.9rem;
     color: #6b6b6b;
@@ -469,6 +468,22 @@ function showPostView(post, html) {
   document.getElementById('post-content').innerHTML = html;
   document.title = "{{ site.title }} – " + post.title;
 
+  // Intercept in-post anchor links (e.g. #ref1) so they scroll
+  // instead of triggering the hash router
+  var contentEl = document.getElementById('post-content');
+  contentEl.addEventListener('click', function(e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      var target = contentEl.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+
   // Scroll to top
   window.scrollTo(0, 0);
 }
@@ -493,14 +508,19 @@ async function loadPost(slug) {
   document.title = "{{ site.title }} – " + post.title;
 
   try {
-    const response = await fetch(POSTS_DIR + post.file);
-    if (!response.ok) throw new Error('Post not found');
+    const url = POSTS_DIR + post.file;
+    console.log('[Blog] Fetching:', url);
+    const response = await fetch(url);
+    console.log('[Blog] Response status:', response.status, response.statusText);
+    if (!response.ok) throw new Error('HTTP ' + response.status + ' for ' + url);
     const md = await response.text();
+    console.log('[Blog] Loaded', md.length, 'chars');
     const html = renderMarkdownWithMath(md);
     showPostView(post, html);
   } catch (e) {
+    console.error('[Blog] Load failed:', e);
     document.getElementById('post-content').innerHTML =
-      '<p style="color:#c64537;">Failed to load post. Please try again.</p>';
+      '<p style="color:#c64537;">Failed to load post: ' + e.message + '</p>';
   }
 }
 
@@ -509,11 +529,12 @@ async function loadPost(slug) {
 // =============================================================
 function handleRoute() {
   const hash = window.location.hash.replace('#', '');
-  if (hash) {
+  if (hash && posts.some(function(p) { return p.slug === hash; })) {
     loadPost(hash);
-  } else {
+  } else if (!hash) {
     showListView();
   }
+  // If hash doesn't match a post slug, ignore it (it's an in-page anchor)
 }
 
 window.addEventListener('hashchange', handleRoute);

@@ -9,7 +9,7 @@ To quote [[2](#ref2)], the authors describe the idea as follows:
 > "The essential idea, inspired by non-equilibrium statistical physics, is to systematically and slowly destroy structure in a data distribution through an iterative forward diffusion process. We then learn a reverse diffusion process that restores structure in data, yielding a highly flexible and tractable generative model of the data."
 
 <div class="figure">
-  <img src="/assets/images/diff.svg" alt="Diffusion Process Illustration">
+  <img src="/assets/images/diff.svg" alt="Diffusion Process Illustration" style="max-width:100%;height:auto;width:800px;">
   <p class="caption"><strong>Figure 1:</strong> An illustration of the Diffusion process. The process involves a forward process, which adds noise to the data via a noise scheduler (such as cosine schedule in this case) and a learned reverse process, which attempts to remove the noise added during the forward process incrementally.</p>
 </div>
 
@@ -76,9 +76,9 @@ Once trained, the denoising module/reverse diffusion module is directly used to 
 
 ## References
 
-<div class="references">
+<div class="references">ī
 
-<p id="ref1">[1] J. Ho, A. Jain, and P. Abbeel, “Denoising Diffusion Probabilistic Models,” arXiv preprint, 2020, last revised 16 Dec 2020. <a href="https://arxiv.org/abs/2006.11239" target="_blank">Link</a></p>
+<p id="ref1"> [1] J. Ho, A. Jain, and P. Abbeel, “Denoising Diffusion Probabilistic Models,” arXiv preprint, 2020, last revised 16 Dec 2020. <a href="https://arxiv.org/abs/2006.11239" target="_blank">Link</a></p>
 
 <p id="ref2">[2] J. Sohl-Dickstein, E. A. Weiss, N. Maheswaranathan, and S. Ganguli, “Deep unsupervised learning using nonequilibrium thermodynamics,” 2015. <a href="https://arxiv.org/abs/1503.03585" target="_blank">Link</a></p>
 
