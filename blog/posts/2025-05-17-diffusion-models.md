@@ -76,7 +76,7 @@ Once trained, the denoising module/reverse diffusion module is directly used to 
 
 ## References
 
-<div class="references">ī
+<div class="references">
 
 <p id="ref1"> [1] J. Ho, A. Jain, and P. Abbeel, “Denoising Diffusion Probabilistic Models,” arXiv preprint, 2020, last revised 16 Dec 2020. <a href="https://arxiv.org/abs/2006.11239" target="_blank">Link</a></p>
 
