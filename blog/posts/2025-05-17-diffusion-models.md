@@ -88,10 +88,9 @@ Once trained, the denoising module/reverse diffusion module is directly used to 
 
 
 
-<p id="ref5">[5] R.Rombach,A.Blattmann,D.Lorenz,P.Esser,andB.Ommer,“High-Resolution Image Synthesis with Latent Diffusion Models,”in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),2022,pp.10684–10695.
+<p id="ref5">[5] R.Rombach, A.Blattmann, D.Lorenz, P.Esser, and B.Ommer, “High-Resolution Image Synthesis with Latent Diffusion Models”, in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),2022,pp.10684–10695.
 
-<p id="ref6">[6] S. Chen, P. Sun, Y. Song, and P. Luo, “DiffusionDet: Diffusion Model for Object Detection,” in Proceedings of the IEEE/CVF International Conference on Computer Vi
-sion (ICCV), 2023, pp. 19830–19843.
+<p id="ref6">[6] S. Chen, P. Sun, Y. Song, and P. Luo, “DiffusionDet: Diffusion Model for Object Detection”, in Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), 2023, pp. 19830–19843.
 
 <p id="ref7">[7]  J. Wolleb, R. Sandkühler, F. Bieder, P. Valmaggia, and P. F. Cattin, “Diffusion Models for Implicit Image Segmentation Ensembles,” in Proceedings of the International Conference on Medical Imaging with Deep Learning (MIDL), vol. 172. PMLR, 2022, pp. 1336–1348. <a href="https://proceedings.mlr.press/v172/wolleb22a.html" target="_blank">Link</a></p>
 
