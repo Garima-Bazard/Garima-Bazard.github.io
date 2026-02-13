@@ -71,11 +71,6 @@ But the problem is that Reverse process is based on a Markov chain as explained 
 
 Once trained, the denoising module/reverse diffusion module is directly used to generate new data. To do so, a sample is taken from the Gaussian noise and is then iteratively denoised, leading to the generation of data from noise.
 
-## Diffusion in Point Cloud Registration
-
-The success of diffusion models has inspired several works in the field of Point Cloud Registration (PCR). These works formulate PCR as a denoising diffusion process, either by attempting to generate a correct transformation from a noisy transformation [[9](#ref9), [10](#ref10)] or by attempting to obtain correct correspondence from a noisy correspondence matrix [[11](#ref11)]. Similar to how DDPM [[1](#ref1)] introduces a Forward process (data to noise) and a Reverse process (noise to data), these works introduce frameworks that work via a Forward and a Reverse process. The authors of [[9](#ref9), [11](#ref11)] suggest that the diffusion process acts as a natural data augmenter and helps create diversity in the training set, thus leading to far better generalizability.
-
-For instance, [[9](#ref9)] introduces a diffusion-inspired PCR model, with the SE(3) Diffusion process. This differs from the standard diffusion processes (such as [[1](#ref1)]), which...
 
 ---
 
@@ -83,26 +78,23 @@ For instance, [[9](#ref9)] introduces a diffusion-inspired PCR model, with the S
 
 <div class="references">
 
-<p id="ref1">[1] Ho, J., Jain, A., & Abbeel, P. (2020). Denoising Diffusion Probabilistic Models. <em>NeurIPS 2020</em>. <a href="PLACEHOLDER_LINK_1" target="_blank">Link</a></p>
+<p id="ref1">[1] J. Ho, A. Jain, and P. Abbeel, “Denoising Diffusion Probabilistic Models,” arXiv preprint, 2020, last revised 16 Dec 2020. <a href="https://arxiv.org/abs/2006.11239" target="_blank">Link</a></p>
 
-<p id="ref2">[2] Sohl-Dickstein, J., Weiss, E., Maheswaranathan, N., & Ganguli, S. (2015). Deep Unsupervised Learning using Non-equilibrium Thermodynamics. <em>ICML 2015</em>. <a href="PLACEHOLDER_LINK_2" target="_blank">Link</a></p>
+<p id="ref2">[2] J. Sohl-Dickstein, E. A. Weiss, N. Maheswaranathan, and S. Ganguli, “Deep unsupervised learning using nonequilibrium thermodynamics,” 2015. <a href="https://arxiv.org/abs/1503.03585" target="_blank">Link</a></p>
 
-<p id="ref3">[3] Song, Y., & Ermon, S. (2019). Generative Modeling by Estimating Gradients of the Data Distribution. <em>NeurIPS 2019</em>. <a href="PLACEHOLDER_LINK_3" target="_blank">Link</a></p>
+<p id="ref3">[3] Y. Song, J. Sohl-Dickstein, D. P. Kingma, A. Kumar, S. Ermon, and B. Poole, “Score-based generative modeling through stochastic differential equations,” 2021. <a href="https://arxiv.org/abs/2011.13456" target="_blank">Link</a></p>
 
-<p id="ref4">[4] Song, Y., Sohl-Dickstein, J., Kingma, D. P., Kumar, A., Ermon, S., & Poole, B. (2020). Score-Based Generative Modeling through Stochastic Differential Equations. <a href="PLACEHOLDER_LINK_4" target="_blank">Link</a></p>
+<p id="ref4">[4] J. Song, C. Meng, and S. Ermon, “Denoising diffusion implicit models,” 2022. <a href="https://arxiv.org/abs/2010.02502" target="_blank">Link</a></p>
 
-<p id="ref5">[5] Rombach, R., Blattmann, A., Lorenz, D., Esser, P., & Ommer, B. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. <em>CVPR 2022</em>. <a href="PLACEHOLDER_LINK_5" target="_blank">Link</a></p>
 
-<p id="ref6">[6] Chen, S., Sun, P., Song, Y., & Luo, P. (2023). DiffusionDet: Diffusion Model for Object Detection. <em>ICCV 2023</em>. <a href="PLACEHOLDER_LINK_6" target="_blank">Link</a></p>
 
-<p id="ref7">[7] Baranchuk, D., Rubachev, I., Voynov, A., Khrulkov, V., & Babenko, A. (2022). Label-Efficient Semantic Segmentation with Diffusion Models. <em>ICLR 2022</em>. <a href="PLACEHOLDER_LINK_7" target="_blank">Link</a></p>
+<p id="ref5">[5] R.Rombach,A.Blattmann,D.Lorenz,P.Esser,andB.Ommer,“High-Resolution Image Synthesis with Latent Diffusion Models,”in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),2022,pp.10684–10695.
 
-<p id="ref8">[8] Nichol, A. Q., & Dhariwal, P. (2021). Improved Denoising Diffusion Probabilistic Models. <em>ICML 2021</em>. <a href="PLACEHOLDER_LINK_8" target="_blank">Link</a></p>
+<p id="ref6">[6] S. Chen, P. Sun, Y. Song, and P. Luo, “DiffusionDet: Diffusion Model for Object Detection,” in Proceedings of the IEEE/CVF International Conference on Computer Vi
+sion (ICCV), 2023, pp. 19830–19843.
 
-<p id="ref9">[9] Author Name. (Year). SE(3) Diffusion for Point Cloud Registration. <a href="PLACEHOLDER_LINK_9" target="_blank">Link</a></p>
+<p id="ref7">[7]  J. Wolleb, R. Sandkühler, F. Bieder, P. Valmaggia, and P. F. Cattin, “Diffusion Models for Implicit Image Segmentation Ensembles,” in Proceedings of the International Conference on Medical Imaging with Deep Learning (MIDL), vol. 172. PMLR, 2022, pp. 1336–1348. <a href="https://proceedings.mlr.press/v172/wolleb22a.html" target="_blank">Link</a></p>
 
-<p id="ref10">[10] Author Name. (Year). Diffusion-based Point Cloud Registration. <a href="PLACEHOLDER_LINK_10" target="_blank">Link</a></p>
-
-<p id="ref11">[11] Author Name. (Year). Correspondence Diffusion for Point Cloud Registration. <a href="PLACEHOLDER_LINK_11" target="_blank">Link</a></p>
+<p id="ref8">[8]  A. Nichol and P. Dhariwal, “Improved Denoising Diffusion Probabilistic Models,” arXiv preprint, 2021, submitted 18 Feb 2021. <a href="https://arxiv.org/abs/2102.09672" target="_blank">Link</a></p>
 
 </div>
